@@ -1,13 +1,55 @@
 <!DOCTYPE html>
 <html lang = "en-us">
     <head>
-        <tittle>Trivia Game</tittle>
+        <title>Trivia Game</title>
+        <link rel="shortcut icon" href="Assets/images/icon.ico">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <link href="https://fonts.googleapis.com/css?family=Ewert" rel="stylesheet">
-        <style>h1 {font-family: 'Ewert', cursive} </style>
+        <link href="https://fonts.googleapis.com/css?family=Acme|Ewert" rel="stylesheet">
+        <link rel="stylesheet" href="Assets/css/style.css">
+        <style>h1 {font-family: 'Ewert', cursive; color: black; text-align: center; font-size: 80px} h3 {font-family: 'Acme', sans-serif; text-align: center; font-size: 50px; color: white} </style>
     </head>
     <body>
-        
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Trivia Game</h1>
+                </div>
+            </div>
+            <div class="row">
+                    <div class="col-12" id="timer">
+                    </div>
+            </div>
+            <div class="row">
+                    <div class="col-12" id="question">
+                    </div>
+            </div>
+            <div id="changing">
+            <div class="row">
+                    <div class="col-12" id="option1">
+                    </div>
+            </div>
+            <div class="row">
+                    <div class="col-12" id="option2">
+                    </div>
+            </div>
+            <div class="row">
+                    <div class="col-12" id="option3">
+                    </div>
+            </div>
+            <div class="row">
+                    <div class="col-12" id="option4">
+                    </div>
+            </div>
+            <div class="row">
+                    <div class="col-12">
+                        <button type="button" class="btn btn-secondary btn-lg" id="start">Start!</button>
+                    </div>
+            </div>
+            </div>
+        </div>
+
+        <script src="Assets/javascript/app.js"></script>
     </body>
 </html>

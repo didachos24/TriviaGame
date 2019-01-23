@@ -1,0 +1,22 @@
+body {
+    background-image: url(../images/background.jpg);
+    background-size: 100%;
+
+}
+
+#start {
+    text-align: center;
+    align-content: center;
+}
+
+#select {
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+    color: black;
+}
+
+p :hover {
+    background-color: beige;
+}
+
