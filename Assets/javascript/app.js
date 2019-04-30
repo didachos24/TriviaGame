@@ -1,12 +1,13 @@
 // Quetions and answer as element
 
-var question1 = {q : "Which is the capital of Colombia?", a1 : "Medellin", a2 : "Bogota", a3 : "Cartagena", a4 : "Barranquilla", correct : "Bogota"};
-var question2 = {q : "Indepency Day of Colombia is", a1 : "July 20", a2 : "November 11", a3 : "June 24", a4 : "January 20", correct : "July 20"};
-var question3 = {q : "The longest river of Colombia is", a1 : "Sinu", a2 : "Cauca", a3 : "Bogota", a4 : "Magdalena", correct : "Magdalena"};
-var question4 = {q : "What city is Shakira from?", a1 : "Medellin", a2 : "Bogota", a3 : "Cartagena", a4 : "Barranquilla", correct : "Barranquilla"};
+var question1 = {q : "Which is the capital of Colombia?", a1 : "Medellin", a2 : "Bogota", a3 : "Cartagena", a4 : "Barranquilla", correct : "2"};
+var question2 = {q : "Indepency Day of Colombia is", a1 : "July 20", a2 : "November 11", a3 : "June 24", a4 : "January 20", correct : "1"};
+var question3 = {q : "The longest river of Colombia is", a1 : "Sinu", a2 : "Cauca", a3 : "Bogota", a4 : "Magdalena", correct : "4"};
+var question4 = {q : "What city is Shakira from?", a1 : "Medellin", a2 : "Bogota", a3 : "Cartagena", a4 : "Barranquilla", correct : "4"};
+var question5 = {q : "Which is the city where Simon Bolivar 'El Libertador' died?", a1 : "Cartagena", a2 : "Mompox", a3 : "Santa Marta", a4 : "Caracas", correct : "3"};
 
 // Array with questions
-var questions = [question1, question2, question3, question4];
+var questions = [question1, question2, question3, question4, question5];
 
 // Variable to set time
 var seconds;
@@ -14,41 +15,53 @@ var seconds;
 // Counters
 var corrects = 0;
 var incorrects = 0;
-var count = 0;
-var answer = ""
+var count = -1;
+var answer = "";
 var t="";
+var d=10;
+var clock;
 
 function insertQuestion() {
 
-    $("#start").hide();
+    if(count <5) {
+        clock = setInterval(insertQuestion, 3000)
 
-    $("#question").html("<h3>" + questions[count].q + "</h3>");
-    $("#option1").html("<p id='select'>" + questions[count].a1 + "</p>");
-    $("#option2").html("<p id='select'>" + questions[count].a2 + "</p>");
-    $("#option3").html("<p id='select'>" + questions[count].a3 + "</p>");
-    $("#option4").html("<p id='select'>" + questions[count].a4 + "</p>");
-    answer = questions[count].correct;
-    console.log(count);
+        $("#start").hide();
+        count ++;
     
+        $("#question").html("<h3>" + questions[count].q + "</h3>");
+        $("#option1").html("<p id='1'>" + questions[count].a1 + "</p>");
+        $("#option2").html("<p id='2'>" + questions[count].a2 + "</p>");
+        $("#option3").html("<p id='3'>" + questions[count].a3 + "</p>");
+        $("#option4").html("<p id='4'>" + questions[count].a4 + "</p>");
+        answer = questions[count].correct;
+        console.log(count); 
+    } else {
+        clearInterval(clock);
+        $("#question").html("<h1>Corrects = " + corrects + "</h1><br><h1>Incorrects = "+incorrects+"</h1>");
+        $("#option1").hide();
+        $("#option2").hide();
+        $("#option3").hide();
+        $("#option4").hide();
+    }
 }
 
-$("#start").click(insertQuestion);
+$(document).on("click", "p", function() {
 
-$("#changing").on("click", "#select", function() {
-    t = this.val;
+    t = this.id;
     console.log(t);
-    if($(this) === answer) {
+    console.log(answer);
+    
+    if(t == answer) {
         corrects++;
-    } else{
-        incorrects++
+    }else {
+        incorrects++;
     }
-    count++;
     console.log("Corrects= " + corrects);
     console.log("Incorrects= " + incorrects);
-    if(count++ <= questions.length) {
-        insertQuestion();
-    } else{
-        alert("finish");
-    }
+
+    clearInterval(clock);
+    insertQuestion();
 })
 
+$("#start").on("click", insertQuestion);
