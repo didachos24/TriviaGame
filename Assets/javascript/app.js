@@ -42,7 +42,7 @@ function insertQuestion() {
         $("#option1").hide();
         $("#option2").hide();
         $("#option3").hide();
-        $("#option4").hide();
+        $("#option4").html("<button type='button' sytle='text-align: center' class='btn btn-secondary btn-lg' id='restart'>Start Over</button>");
     }
 }
 
@@ -64,4 +64,9 @@ $(document).on("click", "p", function() {
     insertQuestion();
 })
 
+function refresh() {
+    this.location.reload(true);
+}
+
 $("#start").on("click", insertQuestion);
+$("#restart").on("click", refresh);
